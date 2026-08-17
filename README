@@ -1,85 +1,111 @@
-# 💼 Employee Income Management — C# .NET
+# Employee Income Management
 
-Sistema desenvolvido em **C#** com foco em **Programação Orientada a Objetos (POO)**, criado para praticar o relacionamento entre classes utilizando **composição**.
+A console application developed in **C#** to practice **Object-Oriented Programming (OOP)** concepts, with a focus on **composition, classes, enumerations, collections, date manipulation, and LINQ**.
 
-O projeto permite cadastrar um trabalhador, seu departamento e seus contratos por hora, além de consultar a renda obtida em determinado mês e ano.
-
-## 🎯 Objetivo
-
-O projeto simula um pequeno sistema de gerenciamento de trabalhadores e contratos, permitindo:
-
-* Cadastrar o departamento do trabalhador;
-* Informar os dados do funcionário;
-* Definir seu nível profissional;
-* Adicionar múltiplos contratos por hora;
-* Consultar os contratos realizados em determinado período;
-* Calcular automaticamente a renda mensal do trabalhador.
+The application allows users to register an employee, associate them with a department, add hourly contracts, and calculate their income for a specific month and year.
 
 ---
 
-## 🧠 Conceitos de Programação Orientada a Objetos
+## 📌 About the Project
 
-Durante o desenvolvimento foram praticados conceitos importantes de **POO em C#**:
+This project was developed as part of my studies in **C# and Object-Oriented Programming**.
 
-* Classes e objetos;
-* Encapsulamento;
-* Propriedades;
-* Construtores;
-* Enumerações (`enum`);
-* Composição entre objetos;
-* Associação entre classes;
-* Coleções com `List<T>`;
-* Manipulação de datas com `DateTime`;
-* Consultas utilizando LINQ;
-* Métodos e responsabilidades de classes;
-* Separação de responsabilidades;
-* Estruturação de projetos C#.
+The main goal is to understand how different objects can work together to represent a real-world scenario.
+
+The application models the relationship between:
+
+* An employee (`Worker`)
+* A department (`Department`)
+* Multiple hourly contracts (`HourContract`)
+* An employee level (`WorkerLevel`)
+
+The project uses **composition** to establish these relationships.
 
 ---
 
-## 🏗️ Estrutura do Projeto
+## 🚀 Features
+
+* 👤 Employee registration
+* 🏢 Department association
+* 🎯 Employee level classification
+* 📄 Hourly contract registration
+* 📅 Contract date management
+* 💰 Hourly contract income calculation
+* 📊 Monthly employee income calculation
+* 🔎 Contract filtering by month and year
+* 🧩 Object composition
+* 📋 Collection management using `List<T>`
+
+---
+
+## 🧠 Concepts Practiced
+
+This project focuses on fundamental **C# and Object-Oriented Programming** concepts:
+
+* Classes and objects
+* Encapsulation
+* Properties
+* Constructors
+* Methods
+* Enumerations (`enum`)
+* Object composition
+* Associations between objects
+* Collections with `List<T>`
+* Date and time manipulation with `DateTime`
+* LINQ
+* Conditional logic
+* Separation of responsibilities
+* Console input/output
+
+---
+
+## 🏗️ Project Structure
 
 ```text
-ProjetoComposicao
+EmployeeIncomeManagement
 │
 ├── Entities
 │   ├── Enums
 │   │   └── WorkerLevel.cs
 │   │
-│   ├── Departament.cs
+│   ├── Department.cs
 │   ├── HourContract.cs
 │   └── Worker.cs
 │
-└── Program.cs
+├── Program.cs
+├── EmployeeIncomeManagement.csproj
+└── README.md
 ```
 
-### 📦 `Worker`
+### `Worker`
 
-Representa o trabalhador e contém informações como:
+Represents the employee and contains information such as:
 
-* Nome;
-* Nível profissional;
-* Salário base;
-* Departamento;
-* Lista de contratos.
+* Name
+* Employee level
+* Base salary
+* Department
+* Hourly contracts
 
-### 🏢 `Departament`
+### `Department`
 
-Representa o departamento ao qual o trabalhador pertence.
+Represents the department associated with the employee.
 
-### 📄 `HourContract`
+### `HourContract`
 
-Representa um contrato de trabalho por hora, contendo:
+Represents an hourly employment contract.
 
-* Data;
-* Valor por hora;
-* Duração em horas.
+Each contract contains:
 
-A classe também é responsável por calcular o valor total do contrato.
+* Date
+* Value per hour
+* Duration in hours
 
-### 🔠 `WorkerLevel`
+The contract can calculate its total value based on the hourly rate and the number of hours worked.
 
-Enumeração utilizada para representar o nível do trabalhador:
+### `WorkerLevel`
+
+An enumeration that represents the employee's professional level:
 
 ```text
 Junior
@@ -87,33 +113,48 @@ MidLevel
 Senior
 ```
 
-### ▶️ `Program`
+### `Program`
 
-Responsável pela interação com o usuário, entrada de dados e execução do fluxo principal da aplicação.
+Responsible for interacting with the user, collecting input data, and executing the application's main flow.
 
 ---
 
-## 🔗 Composição
+## 🔗 Object Composition
 
-O principal conceito trabalhado neste projeto é a **composição**.
+One of the main concepts practiced in this project is **composition**.
 
-Um `Worker` possui um `Departament` e também uma coleção de `HourContract`.
+A `Worker` contains a `Department` and a collection of `HourContract` objects.
 
 ```text
-Worker
- ├── Departament
- │
- └── HourContracts
-       ├── HourContract
-       ├── HourContract
-       └── HourContract
+                    ┌─────────────────┐
+                    │      Worker     │
+                    │                 │
+                    │ Name            │
+                    │ Level           │
+                    │ BaseSalary      │
+                    └────────┬────────┘
+                             │
+                    ┌────────┴────────┐
+                    │                 │
+                    ▼                 ▼
+          ┌─────────────────┐   ┌─────────────────┐
+          │    Department   │   │  Hour Contracts │
+          │                 │   │                 │
+          │ Name            │   │ HourContract    │
+          └─────────────────┘   └────────┬────────┘
+                                        │
+                              ┌─────────┼─────────┐
+                              ▼         ▼         ▼
+                           Contract  Contract  Contract
 ```
 
-Essa estrutura representa um relacionamento de composição entre os objetos.
+This structure demonstrates how objects can be combined to represent more complex entities.
 
 ---
 
-## 💻 Exemplo de Execução
+## 💻 Example
+
+### Input
 
 ```text
 Enter department's name: Design
@@ -143,7 +184,7 @@ Duration (hours): 10
 Enter month and year to calculate income (MM/YYYY): 08/2018
 ```
 
-### Resultado
+### Output
 
 ```text
 Name: Alex
@@ -151,55 +192,154 @@ Department: Design
 Income for 08/2018: 3000.00
 ```
 
-O cálculo considera o **salário base** e os contratos realizados no mês informado.
+### Calculation
+
+The employee's income for August 2018 is calculated using the base salary and contracts performed during that month.
 
 ```text
-Salário base:              R$ 1.200,00
-Contrato 1: 20 × R$ 50,00 = R$ 1.000,00
-Contrato 3: 10 × R$ 80,00 = R$   800,00
-                              ─────────
-Renda total:                R$ 3.000,00
+Base salary:                  R$ 1,200.00
+Contract #1: 20 × R$ 50.00 = R$ 1,000.00
+Contract #3: 10 × R$ 80.00 = R$   800.00
+                              ───────────
+Total income:                 R$ 3,000.00
 ```
 
-O contrato de junho não é considerado no cálculo de agosto.
+The contract from June 2018 is not included because the selected period is August 2018.
 
 ---
 
-## 🛠️ Tecnologias
+## 🛠️ Technologies
 
 * **C#**
 * **.NET**
-* **Visual Studio**
+* **LINQ**
 * **Git**
 * **GitHub**
+* **Visual Studio / Visual Studio Code**
 
 ---
 
-## 📚 Projeto de Estudo
+## ⚙️ Requirements
 
-Este projeto foi desenvolvido como parte dos meus estudos de **C# e Programação Orientada a Objetos**, com foco em transformar conceitos teóricos em uma aplicação prática.
+Before running the project, make sure you have installed:
 
-A proposta foi trabalhar principalmente a modelagem de entidades e o relacionamento entre objetos utilizando composição.
-
----
-
-## 🔎 Arquivos Principais
-
-* [`WorkerLevel.cs`](https://github.com/lucasferreira31/ProjetoComposicao/blob/main/Entities/Enums/WorkerLevel.cs) — níveis do trabalhador
-* [`Departament.cs`](https://github.com/lucasferreira31/ProjetoComposicao/blob/main/Entities/Departament.cs) — departamento
-* [`HourContract.cs`](https://github.com/lucasferreira31/ProjetoComposicao/blob/main/Entities/HourContract.cs) — contratos por hora
-* [`Worker.cs`](https://github.com/lucasferreira31/ProjetoComposicao/blob/main/Entities/Worker.cs) — entidade principal do trabalhador
-* [`Program.cs`](https://github.com/lucasferreira31/ProjetoComposicao/blob/main/Program.cs) — execução da aplicação
+* [.NET SDK](https://dotnet.microsoft.com/download)
+* Git
+* Visual Studio, Visual Studio Code, or another compatible IDE
 
 ---
 
-## 👨‍💻 Autor
+## ▶️ How to Run
+
+Clone the repository:
+
+```bash
+git clone https://github.com/lucasferreira31/employee-income-management-csharp.git
+```
+
+Navigate to the project directory:
+
+```bash
+cd employee-income-management-csharp
+```
+
+Restore the project dependencies:
+
+```bash
+dotnet restore
+```
+
+Run the application:
+
+```bash
+dotnet run
+```
+
+---
+
+## 📚 What I Learned
+
+Through this project, I practiced how to model a real-world problem using **Object-Oriented Programming**.
+
+The main learning points were:
+
+* How to create and organize entities using classes;
+* How to use composition to establish relationships between objects;
+* How to work with collections of objects;
+* How to use enumerations to represent fixed values;
+* How to manipulate dates with `DateTime`;
+* How to filter collections using LINQ;
+* How to separate responsibilities between classes;
+* How to structure a C# console application.
+
+---
+
+## 🔮 Future Improvements
+
+Possible improvements for future versions of the project:
+
+* [ ] Add input validation
+* [ ] Add exception handling
+* [ ] Create automated unit tests with xUnit
+* [ ] Improve application error messages
+* [ ] Add persistence with Entity Framework Core
+* [ ] Integrate SQL Server
+* [ ] Create a REST API using ASP.NET Core
+* [ ] Add Swagger/OpenAPI documentation
+* [ ] Add CI/CD with GitHub Actions
+
+---
+
+## 📂 Project Files
+
+| File              | Description                                    |
+| ----------------- | ---------------------------------------------- |
+| `Worker.cs`       | Represents the employee                        |
+| `Department.cs`   | Represents the employee's department           |
+| `HourContract.cs` | Represents an hourly contract                  |
+| `WorkerLevel.cs`  | Defines the employee's professional level      |
+| `Program.cs`      | Contains the application's main execution flow |
+
+---
+
+## 🎯 Project Goal
+
+The purpose of this project is to strengthen my foundation in **C# and Object-Oriented Programming** as part of my journey toward becoming a professional **.NET developer**.
+
+The project focuses on understanding the fundamentals before moving into more advanced technologies such as:
+
+```text
+C#
+ ↓
+Object-Oriented Programming
+ ↓
+Unit Testing
+ ↓
+Entity Framework Core
+ ↓
+SQL Server
+ ↓
+ASP.NET Core
+ ↓
+REST APIs
+```
+
+---
+
+## 👨‍💻 Author
 
 **Lucas Ferreira Machado**
 
-Desenvolvedor em formação com foco em **C# | .NET | Backend | APIs REST | SQL Server**
+C# / .NET Developer in training, focused on backend development, APIs, databases, and software engineering fundamentals.
 
-[GitHub](https://github.com/lucasferreira31) • [LinkedIn](https://www.linkedin.com/in/lucas-ferreira-machado-96193427a/)
+### Connect with me
+
+* GitHub: [lucasferreira31](https://github.com/lucasferreira31)
+* LinkedIn: [Lucas Ferreira Machado](https://www.linkedin.com/in/lucas-ferreira-machado-96193427a/)
+
+---
+
+⭐ If you found this project useful or interesting, feel free to star the repository!
 
 ---
 
