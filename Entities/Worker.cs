@@ -1,7 +1,7 @@
-﻿using ProjetoComposiçao.Entities.Enums;
+﻿using EmployeeIncomeManagement.Entities.Enums;
 using System.Collections.Generic;
 
-namespace ProjetoComposiçao.Entities
+namespace EmployeeIncomeManagement.Entities
 {
     class Worker
     {
