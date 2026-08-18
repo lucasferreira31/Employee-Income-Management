@@ -1,11 +1,10 @@
-﻿using System;
-using System.Globalization;
-using ProjetoComposiçao.Entities.Enums;
-using ProjetoComposiçao.Entities;
+﻿using System.Globalization;
+using EmployeeIncomeManagement.Entities.Enums;
+using EmployeeIncomeManagement.Entities;
 
 
 
-namespace ProjetoComposiçao
+namespace EmployeeIncomeManagement
 {
     class Program
     {
