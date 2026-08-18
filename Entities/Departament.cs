@@ -1,8 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
 
-namespace ProjetoComposiçao.Entities
+namespace EmployeeIncomeManagement.Entities
 {
     class Departament
     {
